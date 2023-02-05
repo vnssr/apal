@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <x86intrin.h>
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
 
-#define ITERATIONS 100
+#define ITERATIONS 50
 
 class HashedArrayTree {
  	public:
@@ -43,9 +47,9 @@ class HashedArrayTree {
 			for (int i = 0; i < size; ++i) {
 					int block_index = i / num_blocks;
 					int pos = i % num_blocks;
-					printf("%d ", blocks[block_index][pos]);
+					// printf("%d ", blocks[block_index][pos]);
 			}
-			printf("\n");
+			// printf("\n");
 		}
 
  	private:
@@ -70,30 +74,90 @@ class HashedArrayTree {
 
 int main() {
   HashedArrayTree hat;
+	vector<int> arr;
 
-	uint64_t total = 0;
+	u_int64_t total = 0, min = -1, max = 0;
+  ofstream append_file;
+	cout << "opening file\n";
+  append_file.open ("append.csv");
+	append_file << "HAT, Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
-		uint64_t start = __rdtsc();
+		u_int64_t hs = __rdtsc();
 		hat.append(i);
-		total += __rdtsc() - start;
+		u_int64_t he = __rdtsc() - hs;
+		total += he;
+		if (he > max) {
+			max = he;
+		}
+		if (he < min) {
+			min = he;
+		}
+		u_int64_t vs = __rdtsc();
+		arr.push_back(i);
+		u_int64_t ve = __rdtsc() - hs;
+		append_file << he << "," << ve << "\n";
 	}
-	printf("Append Latency: %lu\n", total / ITERATIONS);
+	cout << "closing file\n";
+	append_file.close();
 
-	total = 0;
+	printf("append Latency: %lu\n", total / ITERATIONS);
+	printf("min: %lu\n", min);
+	printf("max: %lu\n", max);
+
+	total = 0, min = -1, max = 0;
+	ofstream access_file;
+	cout << "opening file\n";
+  access_file.open ("access.csv");
+	access_file << "HAT, Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
-		uint64_t start = __rdtsc();
+		u_int64_t hs = __rdtsc();
 		hat.access(i);
-		total += __rdtsc() - start;
+		u_int64_t he = __rdtsc() - hs;
+		total += he;
+		if (he > max) {
+			max = he;
+		}
+		if (he < min) {
+			min = he;
+		}	
+		u_int64_t vs = __rdtsc();
+		arr.at(i);
+		u_int64_t ve = __rdtsc() - hs;
+		access_file << he << "," << ve << "\n";
 	}
-	printf("Access Latency: %lu\n", total / ITERATIONS);
+	cout << "closing file\n";
+	access_file.close();
 
-	total = 0;
+	printf("Access Latency: %lu\n", total / ITERATIONS);
+	printf("min: %lu\n", min);
+	printf("max: %lu\n", max);
+
+	total = 0, min = -1, max = 0;
+	ofstream scan_file;
+	cout << "opening file\n";
+  scan_file.open ("scan.csv");
+	scan_file << "HAT, Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
-		uint64_t start = __rdtsc();
+		u_int64_t hs = __rdtsc();
 		hat.scan();
-		total += __rdtsc() - start;
-	}
+		u_int64_t he = __rdtsc() - hs;
+		total += he;
+		if (he > max) {
+			max = he;
+		}
+		if (he < min) {
+			min = he;
+		}
+		u_int64_t vs = __rdtsc();
+		arr.back();
+		u_int64_t ve = __rdtsc() - hs;
+		scan_file << he << "," << ve << "\n";	}
+	cout << "closing file\n";
+	scan_file.close();
+
 	printf("Scan Latency: %lu\n", total / ITERATIONS);
+	printf("min: %lu\n", min);
+	printf("max: %lu\n", max);
 
   return 0;
 }
