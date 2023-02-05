@@ -1,0 +1,83 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\question}[2] {\vspace{.25in} \hrule\vspace{0.5em}
+\noindent{\bf #1: #2} \vspace{0.5em}
+\hrule \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+\newcommand{\myname}{Vanessa Rujipatanakul}
+\newcommand{\myhwnum}{1}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+ 
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{\textbf{HW\myhwnum}}}
+\rhead{\fancyplain{}{\myname}}
+\chead{\fancyplain{}{ICCS315}}
+
+\begin{document}
+
+\medskip
+
+\thispagestyle{plain}
+\begin{center}
+{\Large ICCS315: Assignment \myhwnum} \\
+\myname \\
+30/01/2023 \\
+\end{center}
+
+\question{1}{\textit{Resizable Arrays}}
+\part{a} Append Latency \\
+HAT $\approx 96$ cycles \\
+Vector $\approx 260$ cycles
+\begin{center}
+  \includegraphics[width=15cm]{p1a}
+\end{center}
+
+\part{b} Access Latency \\
+HAT $\approx 96$ cycles \\
+Vector $\approx 232$ cycles
+\begin{center}
+  \includegraphics[width=15cm]{p1b}
+\end{center}
+
+\part{c} Scan Latency \\
+HAT $\approx 1864$ cycles \\
+Vector $\approx 2036$ cycles
+\begin{center}
+  \includegraphics[width=15cm]{p1c}
+\end{center}
+
+\part{d}
+Overall Latency \\
+HAT $\approx 96$ cycles \\
+Vector $\approx 264$ cycles
+\begin{center}
+  \includegraphics[width=15cm]{p1a}
+\end{center}
+
+\question{3}{\textit{Skip Lists}}
+\part{a}
+
+\part{b}
+
+\question{4}{\textit{(a, b) tree}}
+\part{a} \\
+\includegraphics[width=15cm]{p4a}
+
+\part{b} \\
+\includegraphics[width=15cm]{p4b}
+
+\question{4}{\textit{B-Tree Speed}}
+
+\end{document}
+
