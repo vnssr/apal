@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.17)  6 FEB 2023 20:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.17)  6 FEB 2023 22:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -265,15 +265,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [2 <./images//p1b.png> <./images//p1c.png>]
-<./images//p4a.jpg, id=22, 1646.15pt x 574.145pt>
+<./images//p3a1.png, id=22, 892.33376pt x 577.15625pt>
+File: ./images//p3a1.png Graphic file (type png)
+<use ./images//p3a1.png>
+Package pdftex.def Info: ./images//p3a1.png  used on input line 74.
+(pdftex.def)             Requested size: 426.79134pt x 276.0455pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[3 <./images//p1d.png> <./images//p3a1.png>]
+<./images//p3a2.png, id=28, 892.33376pt x 577.15625pt>
+File: ./images//p3a2.png Graphic file (type png)
+<use ./images//p3a2.png>
+Package pdftex.def Info: ./images//p3a2.png  used on input line 81.
+(pdftex.def)             Requested size: 426.79134pt x 276.0455pt.
+<./images//p4a.jpg, id=29, 1646.15pt x 574.145pt>
 File: ./images//p4a.jpg Graphic file (type jpg)
 <use ./images//p4a.jpg>
-Package pdftex.def Info: ./images//p4a.jpg  used on input line 75.
+Package pdftex.def Info: ./images//p4a.jpg  used on input line 88.
 (pdftex.def)             Requested size: 426.79134pt x 148.85365pt.
-<./images//p4b.jpeg, id=23, 1214.5375pt x 1440.38126pt>
+<./images//p4b.jpeg, id=30, 1214.5375pt x 1440.38126pt>
 File: ./images//p4b.jpeg Graphic file (type jpg)
 <use ./images//p4b.jpeg>
-Package pdftex.def Info: ./images//p4b.jpeg  used on input line 78.
+Package pdftex.def Info: ./images//p4b.jpeg  used on input line 91.
 (pdftex.def)             Requested size: 426.79134pt x 506.14104pt.
 
 
@@ -283,7 +302,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[3 <./images//p1d.png> <./images//p4a.jpg>]
+[4 <./images//p3a2.png> <./images//p4a.jpg>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -291,20 +310,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[4 <./images//p4b.jpeg>] (./a1.aux) ) 
+[5 <./images//p4b.jpeg>] (./a1.aux) ) 
 Here is how much of TeX's memory you used:
- 3385 strings out of 476093
- 50490 string characters out of 5791585
+ 3407 strings out of 476093
+ 50912 string characters out of 5791585
  1852793 words of memory out of 5000000
- 23748 multiletter control sequences out of 15000+600000
+ 23770 multiletter control sequences out of 15000+600000
  517900 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,62p,258b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on a1.pdf (4 pages, 825753 bytes).
+Output written on a1.pdf (5 pages, 889913 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

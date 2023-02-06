@@ -15,8 +15,8 @@ class Node {
 		int key;
 		Node** pointers;
 
-		Node(int key, int level) {
-			key = key;
+		Node(int k, int level) {
+			key = k;
 			pointers = new Node*[level + 1];
 			memset(pointers, 0, sizeof(Node*) * (level + 1));
 		}
@@ -94,12 +94,13 @@ class SkipList {
 };
 
 int get(list<int> linked_list, int key) {
-    list<int>::iterator it;
-    for (it = linked_list.begin(); it != linked_list.end(); it++) {
-			if (*it == key) {
-				return *it;
-			}
+	list<int>::iterator it;
+	int last = linked_list.back();
+	for (it = linked_list.begin(); *it != last; it++) {
+		if (*it == key) {
+			return *it;
 		}
+	}
 }
 
 int main() {
@@ -110,7 +111,7 @@ int main() {
 	u_int64_t total = 0, min = -1, max = 0;
   ofstream insert_file;
 	cout << "opening file\n";
-  insert_file.open ("insert.csv");
+  insert_file.open ("p3a_insert.csv");
 	insert_file << "Skip List,Linked List\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
@@ -138,11 +139,11 @@ int main() {
 	total = 0, min = -1, max = 0;
   ofstream search_file;
 	cout << "opening file\n";
-  search_file.open ("search.csv");
+  search_file.open ("p3a_search.csv");
 	search_file << "Skip List,Linked List\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
-		skip_list.search(i);
+		cout << skip_list.search(i)->key <<"\n";
 		u_int64_t he = __rdtsc() - hs;
 		total += he;
 		if (he > max) {
