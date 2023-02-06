@@ -159,5 +159,49 @@ int main() {
 	printf("min: %lu\n", min);
 	printf("max: %lu\n", max);
 
+	HashedArrayTree new_hat;
+
+	u_int64_t hat_overall = 0, hat_total = 0;
+  ofstream hat_overall_file;
+	cout << "opening file\n";
+  hat_overall_file.open ("hat_append.csv");
+	hat_overall_file << "HAT\n";
+	for(int i = 0; i < ITERATIONS; i++) {
+		hat_total = 0;
+		for (int j = 0; i < 50; i++) {
+			u_int64_t hs = __rdtsc();
+			new_hat.append(i);
+			u_int64_t he = __rdtsc() - hs;
+			hat_total += he;
+		}
+		hat_overall_file << hat_total << "\n";	
+		hat_overall += hat_total;
+	}
+	cout << "closing file\n";
+	hat_overall_file.close();
+
+	printf("Overall Latency: %lu\n", hat_overall / ITERATIONS);
+
+	vector<int> new_arr;
+
+	u_int64_t vec_overall = 0, vec_total = 0;
+  ofstream vec_overall_file;
+	cout << "opening file\n";
+  vec_overall_file.open ("hat_append.csv");
+	vec_overall_file << "Vector\n";
+	for(int i = 0; i < ITERATIONS; i++) {
+		vec_total = 0;
+		for (int j = 0; i < 50; i++) {
+			u_int64_t vs = __rdtsc();
+			new_arr.push_back(i);
+			u_int64_t ve = __rdtsc() - vs;
+			vec_total += ve;
+		}
+		vec_overall_file << vec_total << "\n";	
+		vec_overall += vec_total;
+	}
+	cout << "closing file\n";
+	vec_overall_file.close();
+
   return 0;
 }
