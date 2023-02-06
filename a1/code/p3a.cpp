@@ -152,9 +152,9 @@ int main() {
 			min = he;
 		}
 		u_int64_t vs = __rdtsc();
-		cout << get(linked_list, i);
+		get(linked_list, i);
 		u_int64_t ve = __rdtsc() - hs;
-		insert_file << he << "," << ve << "\n";
+		search_file << he << "," << ve << "\n";
 	}
 	cout << "closing file\n";
 	search_file.close();
