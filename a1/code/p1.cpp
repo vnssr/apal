@@ -72,13 +72,6 @@ class HashedArrayTree {
 		}
 };
 
-u_int64_t insert(int i) {
-	HashedArrayTree hat;
-	long hs = __rdtsc();
-	hat.append(i);
-	return __rdtsc() - hs;
-}
-
 int main() {
   HashedArrayTree hat;
 	vector<int> arr;
@@ -86,7 +79,7 @@ int main() {
 	u_int64_t total = 0, min = -1, max = 0;
   ofstream append_file;
 	cout << "opening file\n";
-  append_file.open ("append.csv");
+  append_file.open ("p1_append.csv");
 	append_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
@@ -107,14 +100,14 @@ int main() {
 	cout << "closing file\n";
 	append_file.close();
 
-	printf("append Latency: %lu\n", total / ITERATIONS);
+	printf("Append Latency: %lu\n", total / ITERATIONS);
 	printf("min: %lu\n", min);
 	printf("max: %lu\n", max);
 
 	total = 0, min = -1, max = 0;
 	ofstream access_file;
 	cout << "opening file\n";
-  access_file.open ("access.csv");
+  access_file.open ("p1_access.csv");
 	access_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
@@ -142,7 +135,7 @@ int main() {
 	total = 0, min = -1, max = 0;
 	ofstream scan_file;
 	cout << "opening file\n";
-  scan_file.open ("scan.csv");
+  scan_file.open ("p1_scan.csv");
 	scan_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
@@ -169,7 +162,7 @@ int main() {
 	u_int64_t hat_overall = 0, hat_total = 0;
   ofstream hat_overall_file;
 	cout << "opening file\n";
-  hat_overall_file.open ("hat_append.csv");
+  hat_overall_file.open ("p1_hat_append.csv");
 	hat_overall_file << "HAT\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hat_total = 0;
@@ -190,7 +183,7 @@ int main() {
 	u_int64_t vec_overall = 0, vec_total = 0;
   ofstream vec_overall_file;
 	cout << "opening file\n";
-  vec_overall_file.open ("vec_append.csv");
+  vec_overall_file.open ("p1_vec_append.csv");
 	vec_overall_file << "Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		vector<int> new_arr;
