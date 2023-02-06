@@ -82,6 +82,15 @@ Linked List $\approx 65856$ cycles
 \end{center}
 
 \part{b}
+Insert Latency $\approx 2556$ cycles \\
+\begin{center}
+  \includegraphics[width=15cm]{p3b1}
+\end{center}
+
+Search Latency $\approx 1196$ cycles
+\begin{center}
+  \includegraphics[width=15cm]{p3b2}
+\end{center}
 
 \question{4}{\textit{(a, b) tree}}
 \part{a} \\
@@ -91,6 +100,9 @@ Linked List $\approx 65856$ cycles
 \includegraphics[width=15cm]{p4b}
 
 \question{4}{\textit{B-Tree Speed}}
+An optimal value of b should be between 100 and 1000. This range seems to be the balance between minimizing the number of disk accesses and minimizing the space overhead per node.
+A smaller value of b means that each node contains fewer keys and values, reducing the space overhead per node. But this also increases the height of the tree, leading to more disk accesses and slower performance for operations that require disk access.
+A larger value of b means that each node contains more keys and values, reducing the height of the tree and the number of disk accesses required. However, this also increases the space overhead per node.
 
 \end{document}
 

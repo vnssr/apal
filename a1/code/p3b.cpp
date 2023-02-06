@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
-#include <./p3a.h>
 using namespace std;
 
 #define PROB 1/2
@@ -98,7 +97,7 @@ class BiSkipList {
 			int level = 0;
 
 			for (int i = 0; i <= current_level; i++) {
-				while (current_node->next[i] != NULL && current_node->next[i]->key <= key) {
+				if (current_node->next[i] != NULL && current_node->next[i]->key <= key) {
 					node = current_node->next[i];
 					level = i;
 				}
@@ -124,17 +123,16 @@ class BiSkipList {
 
 int main() {
 	int n = 1000;
-	SkipList skip_list(log(n));
 	BiSkipList bi_skip_list(log(n));
 
 	u_int64_t total = 0, min = -1, max = 0;
   ofstream insert_file;
 	cout << "opening file\n";
   insert_file.open ("p3b_insert.csv");
-	insert_file << "Skip List,Bi Skip List\n";
+	insert_file << "Bi Skip List\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
-		skip_list.insert(i);
+		bi_skip_list.insert(i);
 		u_int64_t he = __rdtsc() - hs;
 		total += he;
 		if (he > max) {
@@ -143,10 +141,7 @@ int main() {
 		if (he < min) {
 			min = he;
 		}
-		u_int64_t vs = __rdtsc();
-		bi_skip_list.insert(i);
-		u_int64_t ve = __rdtsc() - hs;
-		insert_file << he << "," << ve << "\n";
+		insert_file << he << "\n";
 	}
 	cout << "closing file\n";
 	insert_file.close();
@@ -159,10 +154,10 @@ int main() {
   ofstream search_file;
 	cout << "opening file\n";
   search_file.open ("p3b_search.csv");
-	search_file << "Skip List,Bi Skip List\n";
+	search_file << "Bi Skip List\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
-		skip_list.search(i);
+		bi_skip_list.search(i);
 		u_int64_t he = __rdtsc() - hs;
 		total += he;
 		if (he > max) {
@@ -171,10 +166,7 @@ int main() {
 		if (he < min) {
 			min = he;
 		}
-		u_int64_t vs = __rdtsc();
-		bi_skip_list.search(i);
-		u_int64_t ve = __rdtsc() - hs;
-		search_file << he << "," << ve << "\n";
+		search_file << he << "\n";
 	}
 	cout << "closing file\n";
 	search_file.close();
