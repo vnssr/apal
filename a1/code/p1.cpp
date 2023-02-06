@@ -72,6 +72,13 @@ class HashedArrayTree {
 		}
 };
 
+u_int64_t insert(int i) {
+	HashedArrayTree hat;
+	long hs = __rdtsc();
+	hat.append(i);
+	return __rdtsc() - hs;
+}
+
 int main() {
   HashedArrayTree hat;
 	vector<int> arr;
@@ -80,7 +87,7 @@ int main() {
   ofstream append_file;
 	cout << "opening file\n";
   append_file.open ("append.csv");
-	append_file << "HAT, Vector\n";
+	append_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
 		hat.append(i);
@@ -108,7 +115,7 @@ int main() {
 	ofstream access_file;
 	cout << "opening file\n";
   access_file.open ("access.csv");
-	access_file << "HAT, Vector\n";
+	access_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
 		hat.access(i);
@@ -136,7 +143,7 @@ int main() {
 	ofstream scan_file;
 	cout << "opening file\n";
   scan_file.open ("scan.csv");
-	scan_file << "HAT, Vector\n";
+	scan_file << "HAT,Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
 		u_int64_t hs = __rdtsc();
 		hat.scan();
@@ -159,20 +166,18 @@ int main() {
 	printf("min: %lu\n", min);
 	printf("max: %lu\n", max);
 
-	HashedArrayTree new_hat;
-
 	u_int64_t hat_overall = 0, hat_total = 0;
   ofstream hat_overall_file;
 	cout << "opening file\n";
   hat_overall_file.open ("hat_append.csv");
 	hat_overall_file << "HAT\n";
 	for(int i = 0; i < ITERATIONS; i++) {
-		hat_total = 0;
-		for (int j = 0; i < 50; i++) {
+		u_int64_t hat_total = 0;
+		for (int j = 0; j < i; j++) {
+			HashedArrayTree hat;
 			u_int64_t hs = __rdtsc();
-			new_hat.append(i);
-			u_int64_t he = __rdtsc() - hs;
-			hat_total += he;
+			hat.append(j);
+			hat_total += __rdtsc() - hs;
 		}
 		hat_overall_file << hat_total << "\n";	
 		hat_overall += hat_total;
@@ -182,18 +187,17 @@ int main() {
 
 	printf("Overall Latency: %lu\n", hat_overall / ITERATIONS);
 
-	vector<int> new_arr;
-
 	u_int64_t vec_overall = 0, vec_total = 0;
   ofstream vec_overall_file;
 	cout << "opening file\n";
-  vec_overall_file.open ("hat_append.csv");
+  vec_overall_file.open ("vec_append.csv");
 	vec_overall_file << "Vector\n";
 	for(int i = 0; i < ITERATIONS; i++) {
+		vector<int> new_arr;
 		vec_total = 0;
-		for (int j = 0; i < 50; i++) {
+		for (int j = 0; j < i; j++) {
 			u_int64_t vs = __rdtsc();
-			new_arr.push_back(i);
+			new_arr.push_back(j);
 			u_int64_t ve = __rdtsc() - vs;
 			vec_total += ve;
 		}
