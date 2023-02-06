@@ -5,6 +5,7 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \graphicspath{{./images/}}
+\usepackage{hyperref}
 
 \usepackage[margin=1in]{geometry}
 
@@ -35,61 +36,88 @@
 30/01/2023 \\
 \end{center}
 
+\textbf{Note:} Implementations and resources are uploaded to this \href{https://github.com/vnssr/apal}{github}
+
 \question{1}{\textit{Resizable Arrays}}
-\part{a} Append Latency \\
+\part{a} Append Latency (compared to built-in Vector) \\
 HAT $\approx 96$ cycles \\
 Vector $\approx 260$ cycles
 \begin{center}
   \includegraphics[width=15cm]{p1a}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
-\part{b} Access Latency \\
+\part{b} Access Latency (compared to built-in Vector) \\
 HAT $\approx 96$ cycles \\
 Vector $\approx 232$ cycles
 \begin{center}
   \includegraphics[width=15cm]{p1b}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
-\part{c} Scan Latency \\
+\part{c} Scan Latency (compared to built-in Vector) \\
 HAT $\approx 1864$ cycles \\
 Vector $\approx 2036$ cycles
 \begin{center}
   \includegraphics[width=15cm]{p1c}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
 \part{d}
-Overall Latency \\
+Overall Latency (compared to built-in Vector) \\
 HAT $\approx 1980$ cycles \\
 Vector $\approx 8984$ cycles
 \begin{center}
   \includegraphics[width=15cm]{p1d}
+  x-axis = No. of Elements\\
+  y-axis = No. of Cycles
 \end{center}
 
 \question{3}{\textit{Skip Lists}}
 \part{a} \\
-Insert Latency \\
+As Skip List is a data structure that is built upon the general idea of a linked list. The purpose of this experiment is to determine the 
+performance difference between the `insert` and `search` functions of the two data structures by studying per-operation latency.
+
+Insert Latency (compared to built-in Linked List) \\
 Skip List $\approx 2236$ cycles \\
 Linked List $\approx 2960$ cycles
+
 \begin{center}
   \includegraphics[width=15cm]{p3a1}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
-Search Latency \\
+Search Latency (compared to built-in Linked List) \\
 Skip List $\approx 12212$ cycles \\
-Linked List $\approx 65856$ cycles
+Linked List $\approx 65856$ cycles 
+
 \begin{center}
   \includegraphics[width=15cm]{p3a2}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
-\part{b}
+The built-in `list` library in c++ doesn't have a function that can be used to retrieved an element from the list.
+The implementation of the 'get' function utilizes the `begin()` function which returns an iterator of the list in order 
+to scan through all the elements and determine if the element exist in the list or not.
+
+\part{b} \\
 Insert Latency $\approx 2556$ cycles \\
 \begin{center}
   \includegraphics[width=15cm]{p3b1}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
 Search Latency $\approx 1196$ cycles
 \begin{center}
   \includegraphics[width=15cm]{p3b2}
+  x-axis = N-th Iterations\\
+  y-axis = No. of Cycles
 \end{center}
 
 \question{4}{\textit{(a, b) tree}}
